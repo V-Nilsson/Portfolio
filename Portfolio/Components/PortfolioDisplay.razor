@@ -1,0 +1,53 @@
+﻿<Title Level="2">Portfolio</Title>
+<p id="portfolio">
+    <GridRow>
+        <GridCol Span="12" Offset="6">
+            <AntList Grid="grid" DataSource="Projects">
+                <ListItem>
+                    <Card Title=@context.Title Hoverable>
+                        <Body>
+                            <Paragraph>
+                                @context.Description
+                            </Paragraph>
+                            @foreach (var skill in context.Frameworks)
+                            {
+                                <Tag Color="blue-inverse">
+                                    @skill
+                                </Tag>
+                            }
+                            <br />
+                            @if (context.GithubUrl != null)
+                            {
+                                <a href="@context.GithubUrl">
+                                    <Icon Type="github" Theme="outline" Style="font-size: 32px; padding-top:10px" />
+                                </a>
+                            }
+                        </Body>
+                    </Card>
+                </ListItem>
+            </AntList>
+        </GridCol>
+    </GridRow>
+    <Divider></Divider>
+</p>
+
+@code{
+    public ListGridType grid = new ListGridType { Gutter = 16, Column = 6 };
+
+    public List<Project> Projects = new List<Project>
+    {
+        new Project { Title = "Chess App", Description = "See your chess rating on Chess.com", Frameworks = new List<string> {"React", "C#" } },
+        new Project { Title = "Habit Tracker", Description = "Quote from Aristotle", Frameworks = new List<string> {"React", "C#" } },
+        new Project { Title = "Swedish Bankaccounts", Description = "An open source package to validate swedish bank account numbers", Frameworks = new List<string> {"C#" },
+        GithubUrl = "https://github.com/jellyhive/SwedishBankAccounts" },
+        new Project { Title = "Title 4", Description = "Three Thing", Frameworks = new List<string> {"React", "C#" } },
+    };
+
+    public class Project
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public List<string> Frameworks { get; set; }
+        public string GithubUrl { get; set; }
+    }
+}

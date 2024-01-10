@@ -10,4 +10,8 @@
     <PackageReference Include="AntDesign" Version="0.16.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>

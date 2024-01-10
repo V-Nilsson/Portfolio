@@ -1,0 +1,33 @@
+﻿<Layout>
+    <Title Level="2">Skills</Title>
+    <h1 id="skills"></h1>
+    <GridRow>
+        <GridCol Span="12" Offset="6">
+            <AntList Grid="grid" DataSource="skills">
+                <ListItem>
+                    <Card>
+                        <Body>
+                            @context
+                        </Body>
+                    </Card>
+                </ListItem>
+            </AntList>
+        </GridCol>
+    </GridRow>
+
+</Layout>
+
+@code{
+    public ListGridType grid = new ListGridType { Gutter = 16, Column = 6 };
+
+    public List<string> skills = new List<string>
+    {
+        "C#",
+        "ASP.NET",
+        "SQL",
+        "MassTransit",
+        "React",
+        "HTML5",
+        "CSS"
+    };
+}
